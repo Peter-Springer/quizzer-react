@@ -1,1 +1,1 @@
-# quizzer-react
+# Quizzer
