@@ -1,51 +1,27 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from 'react'
+import Questions from './Questions'
 
 class Quiz extends Component {
   constructor() {
-    super();
-    this.state = {
-      quizzes: [],
-      questions: [],
-    };
+    super()
+    this.loadQuizzes = this.loadQuizzes.bind(this)
   }
 
-  componentDidMount() {
-    axios.get('/quizzes', {
+  loadQuizzes() {
+    return this.props.quizzes.map(quiz => {
+      return(
+        <div key={quiz.id}>
+          <h1>{quiz.title}</h1>
+          <Questions questions={quiz.questions} />
+        </div>
+      )
     })
-    .then((response) => {
-      this.setState({
-        quizzes: response.data.quizzes,
-        questions: response.data.quizzes[0].questions,
-      });
-    })
-    .catch(function () {
-      console.log('request failed');
-    });
-   }
-
-  renderQuizTitleToPage(state) {
-    return state.map(q => <article className='quiz-title' key={q.id}>
-                          <h1>{q.title}</h1>
-                        </article>)
-  }
-
-  renderQuestionsToPage(state) {
-    return state.map(q => <article className='question-answers' key={q.id}>
-                            <h3 className='question-header'>
-                              {q.title}
-                            </h3>
-                            {q.answers.map((q, i) =>
-                            <p key={i}>☐{q.title}</p>
-                            )}
-                          </article>)
   }
 
   render() {
     return (
       <div className='questions-container'>
-      <section>{this.renderQuizTitleToPage(this.state.quizzes)}</section>
-      <section>{this.renderQuestionsToPage(this.state.questions)}</section>
+        {this.loadQuizzes()}
       </div>
     );
   }
