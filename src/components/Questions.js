@@ -10,7 +10,9 @@ class Questions extends Component {
   loadQuestions() {
     return this.props.questions.map(question => {
       return(
-        <article key={question.id}>
+        <article
+          className='question-header'
+          key={question.id}>
           <h3>{question.title}</h3>
           <Answers answers={question.answers} />
         </article>
@@ -20,7 +22,7 @@ class Questions extends Component {
 
   render() {
     return (
-      <div className='questions-container'>
+      <div>
         {this.loadQuestions()}
       </div>
     );

@@ -1,12 +1,16 @@
-/*.App {
+.App {
   font-family: 'Open Sans', sans-serif;
   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
 }
 
 .question-header {
   background-color: #004b7a;
   color: white;
-  padding-left: 10px;
 }
 
 .question-answers {
@@ -14,11 +18,3 @@
   color: black;
   text-align: left;
 }
-
-.questions-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-}*/

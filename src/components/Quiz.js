@@ -20,7 +20,7 @@ class Quiz extends Component {
 
   render() {
     return (
-      <div className='questions-container'>
+      <div>
         {this.loadQuizzes()}
       </div>
     );
